@@ -1,0 +1,21 @@
+version: '3'
+services:
+  database:
+    container_name: oracledb
+    image: "gvenzl/oracle-xe:18-slim"
+    env_file:
+      - database.env
+    ports:
+      - 1521:1521
+    volumes:
+      - "../db/01_initdb:/container-entrypoint-initdb.d"
+      - "../db/02_startdb:/container-entrypoint-startdb.d"
+      - "../db/src:/tmp/src"
+  dev-env:
+    container_name: dev-env
+    build:
+      context: .
+    volumes:
+      - "..:/workspace"
+    stdin_open: true # docker run -i
+    tty: true # docker run -t  

@@ -1,0 +1,48 @@
+<div class="po-row">
+  <po-button
+    class="po-md-1"
+    p-label="Novo"
+    p-icon="fa fa-plus"
+    (p-click)="abrirModal()"
+  ></po-button>
+</div>
+<po-divider></po-divider>
+<!-- MODAL - FORM -->
+<po-modal [p-title]="tituloModal" p-size="md" [p-click-out]="true">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input
+        class="po-md-12"
+        formControlName="descricao"
+        p-label="Descrição"
+        p-required
+      ></po-input>
+    </div>
+  </form>
+  <po-modal-footer [p-disabled-align]="false">
+    <po-divider></po-divider>
+    <po-button
+      [p-danger]="true"
+      p-icon="fa fa-right-from-bracket"
+      p-label="Cancelar"
+      (p-click)="fecharModal()"
+    >
+    </po-button>
+    <po-button
+      p-label="Salvar"
+      p-icon="fa fa-floppy-disk"
+      [p-disabled]="this.form.invalid"
+      (p-click)="salvar()"
+    >
+    </po-button>
+  </po-modal-footer>
+</po-modal>
+
+<!-- TABLE -->
+<po-table
+  [p-actions]="actions"
+  [p-columns]="columns"
+  [p-items]="items"
+  [p-height]="400"
+  [p-actions-right]="true"
+></po-table>
