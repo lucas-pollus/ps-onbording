@@ -468,7 +468,7 @@ namespace PS.Web.Features.Produtos.Models;
 
 public record AtualizarProdutoCommand
 {
-    public string Descricao { get; set; }
+    public string Descricao { get; init; }
     public int CategoriaId { get; init; }
 }
 ```
@@ -483,8 +483,8 @@ namespace PS.Web.Features.Produtos.Models;
 public record ListarTodosProdutosOutput : IQueryOutput
 {
     public int Id { get; init; }
-    public string Descricao { get; set; }
-    public int CategoriaId { get; set; }
+    public string Descricao { get; init; }
+    public int CategoriaId { get; init; }
 }
 ```
 
@@ -719,8 +719,8 @@ Adicione o `record` que irá representar a requisição para atualizar o produto
 public record AtualizarProdutoRequest
 {
     public int ProdutoId { get; init; }
-    public string Descricao { get; set; }
-    public string CategoriaId { get; set; }
+    public string Descricao { get; init; }
+    public string CategoriaId { get; init; }
 
     public static implicit operator AtualizarProdutoCommand(AtualizarProdutoRequest req)
     {
